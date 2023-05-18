@@ -60,12 +60,17 @@ export default defineType({
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
-
+    defineField({
+      title: 'Video',
+      name: 'Video',
+      type: 'video',
+    }),      
 defineField({
-  title: 'Video',
-  name: 'blockVideo',
-  type: 'video',
-}),      defineField({
+  title: 'Web Video',
+  name: 'blockWebVideo',
+  type: 'webvideo',
+}),      
+defineField({
   name: 'myGallery',
   title: 'My Gallery',
   type: 'object',

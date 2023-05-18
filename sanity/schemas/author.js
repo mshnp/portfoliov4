@@ -76,6 +76,12 @@ export default defineType({
       type: 'string',
       validation: Rule => Rule.required().email().error('A valid email is required')
 }),
+defineField({
+  name: 'summary',
+  title: 'Summary',
+  type: 'blockContent',
+  description: 'Add some copy about yourself',
+}),
     defineField({
   name: 'socialLinks',
   title: 'Social Links',

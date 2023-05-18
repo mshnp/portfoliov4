@@ -38,9 +38,58 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-    name: 'postVideo',
-    title: 'Video',
-    type: 'video',
+      title: 'Video',
+      name: 'Video',
+      type: 'video',
+    }),  
+    defineField({
+    name: 'postWebVideo',
+    title: 'Web Video',
+    type: 'webvideo',
+}),
+defineField({
+  name: 'duration',
+  title: 'Duration',
+  type: 'string',
+}),
+defineField({
+  name: 'tools',
+  title: 'Tools',
+  type: 'array',
+  of: [{type: 'string'}],
+}),
+defineField({
+  name: 'deliverables',
+  title: 'Deliverables',
+  type: 'array',
+  of: [{type: 'string'}],
+}),
+defineField ({
+  name: 'teamMembers',
+  title: 'Team Members',
+  type: 'array',
+  of: [
+    {
+      type: 'object',
+      fields: [
+        {
+          name: 'name',
+          title: 'Name',
+          type: 'string',
+        },
+        {
+          name: 'role',
+          title: 'Role',
+          type: 'string',
+        },
+        {
+          name: 'linkedin',
+          title: 'LinkedIn',
+          type: 'url',
+        },
+      ],
+    },
+  ],
 }),
    defineField({
   name: 'mainImages', 
