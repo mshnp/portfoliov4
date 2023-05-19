@@ -16,6 +16,8 @@ const Homepage = async () => {
   const posts = await client.fetch(query)
 
     return (
+      <>
+      <h4>Work</h4>
       <div className='flex flex-col justify-center'>
         {posts.map(({ _id, _type, slug: {current: slug}, title, summary, publishedAt, mainImages }) => (
           <div key={_id}>
@@ -38,6 +40,7 @@ const Homepage = async () => {
           </div>
         ))}
       </div>
+      </>
     );
 }
 
