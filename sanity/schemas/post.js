@@ -38,11 +38,6 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      title: 'Video',
-      name: 'Video',
-      type: 'video',
-    }),  
-    defineField({
     name: 'postWebVideo',
     title: 'Web Video',
     type: 'webvideo',
@@ -162,7 +157,6 @@ defineField ({
       name: 'credits',
       title: 'Credits',
       type: 'blockContent',
-      validation: Rule => Rule.required(),
       description: 'Here is where you credit people who helped with the project',
     }),
      defineField({
@@ -248,13 +242,8 @@ defineField ({
 
   preview: {
     select: {
+      title: 'title',
       media: 'mainImages.images.0.asset',
-    },
-    prepare(selection) {
-      return {
-        title: 'Main Images',
-        media: selection.media,
-      }
     },
   },
 })
