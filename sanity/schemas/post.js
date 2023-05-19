@@ -43,6 +43,12 @@ export default defineType({
     type: 'webvideo',
 }),
 defineField({
+  name: 'video',
+  title: 'Video',
+  type: 'reference',
+  to: [{ type: 'newVideo' }],
+}),
+defineField({
   name: 'duration',
   title: 'Duration',
   type: 'string',
