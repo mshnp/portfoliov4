@@ -69,18 +69,18 @@ console.log(post)
   </div>
 </section>
 
-<div className="bg-gray-200 w-screen">
+<div className="bg-gray-200 w-full">
   <div className="container mx-auto">
-    <section className="flex flex-wrap justify-center gap-4">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap gap-4">
       {post.duration && (
-        <article className="flex-1 p-4">
+        <article className="p-4 bg-orange-300 flex-auto">
           <h3 className="text-lg font-bold">Duration</h3>
           <p>{post.duration}</p>
         </article>
       )}
 
       {post.tools.length > 0 && (
-        <article className="flex-1 p-4">
+        <article className="p-4 bg-orange-300 flex-auto">
           <h3 className="text-lg font-bold">Tools</h3>
           {post.tools.map((tool, index) => (
             <p key={index}>{tool}</p>
@@ -89,7 +89,7 @@ console.log(post)
       )}
 
       {post.deliverables.length > 0 && (
-        <article className="flex-1 p-4">
+        <article className="p-4 bg-orange-300 flex-auto">
           <h3 className="text-lg font-bold">Deliverables</h3>
           {post.deliverables.map((deliverable, index) => (
             <p key={index}>{deliverable}</p>
@@ -98,7 +98,7 @@ console.log(post)
       )}
 
       {post.teamMembers.length > 0 && (
-        <article className="flex-1 p-4">
+        <article className="p-4 bg-orange-300 flex-auto">
           <h3 className="text-lg font-bold">Team Members</h3>
           {post.teamMembers.map((member) => (
             <a
