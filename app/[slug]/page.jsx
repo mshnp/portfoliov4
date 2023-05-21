@@ -146,8 +146,8 @@ console.log(post)
 <section>
 </section>
 <section>
-       {post.gallery &&
-  <Gallery gallery={post.gallery} />
+       {post.myGallery &&
+  <Gallery gallery={post.myGallery} />
 }
 </section>
 </section>
