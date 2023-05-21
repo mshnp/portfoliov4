@@ -65,7 +65,7 @@ export default defineType({
 defineField({
   title: 'Web Video',
   name: 'blockWebVideo',
-  type: 'webvideo',
+  type: 'webVideo',
 }),      
 defineField({
   name: 'myGallery',

@@ -26,7 +26,8 @@ const Post = async ({params: {slug}}) => {
           }
         }
       },
-      postVideo {
+      postVideo { 
+        isLooping,
         videoFile {
           asset->{
             url
@@ -36,6 +37,7 @@ const Post = async ({params: {slug}}) => {
       body[]{
         ...,
         _type == "blockVideo" => {
+          isLooping,
           videoFile {
             asset -> {
               url

@@ -1,5 +1,4 @@
 import Gallery from "./Gallery";
-import Trying from "./trying";
 import VideoDisplay from "./VideoDisplay";
 
 
