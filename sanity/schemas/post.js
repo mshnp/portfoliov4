@@ -42,11 +42,11 @@ export default defineType({
     title: 'Web Video',
     type: 'webvideo',
 }),
+// schema.js
 defineField({
-  name: 'video',
+  name:'postVideo',
   title: 'Video',
-  type: 'reference',
-  to: [{ type: 'newVideo' }],
+  type: 'video'
 }),
 defineField({
   name: 'duration',
@@ -84,9 +84,10 @@ defineField ({
           type: 'string',
         },
         {
-          name: 'linkedin',
-          title: 'LinkedIn',
+          name: 'Link',
+          title: 'link',
           type: 'url',
+          description:'link to their portfolio',
         },
       ],
     },
@@ -150,7 +151,7 @@ defineField ({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
-      description:'Here is where you put paragraphs, images, image gallery, quotes, etc. (everything here will be like a blog)'
+      description:'Here is where you put paragraphs, videos, images, image gallery, quotes, etc. (everything here will be like a blog post)'
     }),
      defineField({
       name: 'summary',
@@ -158,12 +159,6 @@ defineField ({
       validation: Rule => Rule.required(),
       type: 'text',
       description: 'Quick summary of what you did',
-    }),
-    defineField({
-      name: 'credits',
-      title: 'Credits',
-      type: 'blockContent',
-      description: 'Here is where you credit people who helped with the project',
     }),
      defineField({
   name: 'myGallery',

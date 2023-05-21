@@ -1,25 +1,14 @@
 import Gallery from "./Gallery";
-
-
+import Trying from "./trying";
 
 
 export const RichTextComponents = {
   types: {
-    blockVideo: ({ value }) => (<section>
-  {value.url && (
-    <iframe
-      src={`${value.url}`}
-      title="Media Player"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-    ></iframe>
-  )}
-</section>
 
-    ),
     myGallery: ({value}) => <Gallery  gallery={value} />,
-    },
+    video: ({ value }) => <Trying videoData={value.url} />,
+  },
+
     list: {
       bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
       number: ({ children }) => <ol className="mt-lg">{children}</ol>,

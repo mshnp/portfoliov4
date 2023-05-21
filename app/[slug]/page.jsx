@@ -6,25 +6,35 @@ import { urlForImage } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 import Gallery from '@/components/Gallery';
+import VideoDisplay from '@/components/VideoDisplay';
 
 const Post = async ({params: {slug}}) => {
     const query = groq`
- *[_type in ["post", "projects"] && slug.current == $slug][0] {
-  ...,  myGallery{
-    row1[]{alt, asset->{url}}, 
-    row2[]{alt, asset->{url}}, 
-    row3[]{alt, asset->{url}}, 
-    caption
-  },
-  mainImages {
-    images[]{
-      alt, 
-      asset->{
-        url
+    *[_type in ["post"] && slug.current == $slug][0] {
+      ...,  
+      myGallery{
+        row1[]{alt, asset->{url}}, 
+        row2[]{alt, asset->{url}}, 
+        row3[]{alt, asset->{url}}, 
+        caption
+      },
+      mainImages {
+        images[]{
+          alt, 
+          asset->{
+            url
+          }
+        }
+      },
+      video {
+        videoFile {
+          asset->{
+            url
+          }
+        }
       }
     }
-  }
-}
+    
 `
 const post = await client.fetch(query, {slug})
 
@@ -68,6 +78,9 @@ console.log(post)
     ))}
   </div>
 </section>
+{post.video &&
+  <VideoDisplay videoData={post.video} />
+}
 
 <div className="bg-gray-200 w-full">
   <div className="container mx-auto">
@@ -103,7 +116,7 @@ console.log(post)
           {post.teamMembers.map((member) => (
             <a
               key={member._key}
-              href={member.linkedin}
+              href={member.link}
               target="_blank"
               rel="noopener noreferrer"
               className="block"
@@ -116,15 +129,15 @@ console.log(post)
     </section>
   </div>
 </div>
-
-
-
-
-
-
+<section>
+</section>
+<section>
+</section>
+<section>
        {post.gallery &&
   <Gallery gallery={post.gallery} />
 }
+</section>
 </section>
      {post.youtube && post.youtube.url && (
   <iframe
@@ -141,11 +154,10 @@ console.log(post)
        <section className="bg-pink-100">
         <PortableText value={post.body} components={RichTextComponents}/>
       </section>
-       <section className="bg-orange-100">
-        <PortableText value={post.credits} components={RichTextComponents}/>
-      </section>
     </article>
   )
+
+    
 }
 
 export default Post

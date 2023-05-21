@@ -1,9 +1,8 @@
-// schema.js
-
+// video.js
 export default {
-    name: 'newVideo',
+    name: 'video',
     title: 'Video',
-    type: 'document',
+    type: 'object',
     fields: [
       {
         name: 'title',
@@ -20,9 +19,15 @@ export default {
         title: 'Video File',
         type: 'file',
         options: {
-          accept: 'video/*', // Restrict file types to video files
+          accept: 'video/*',
         },
       },
     ],
+    preview: {
+      select: {
+        title: 'title',
+        media: 'videoFile',
+      },
+    },
   };
   
