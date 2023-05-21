@@ -40,7 +40,7 @@ export default defineType({
     defineField({
     name: 'postWebVideo',
     title: 'Web Video',
-    type: 'webvideo',
+    type: 'webVideo',
 }),
 // schema.js
 defineField({
