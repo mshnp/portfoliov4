@@ -1,12 +1,13 @@
 import Gallery from "./Gallery";
 import Trying from "./trying";
+import VideoDisplay from "./VideoDisplay";
 
 
 export const RichTextComponents = {
   types: {
 
     myGallery: ({value}) => <Gallery  gallery={value} />,
-    video: ({ value }) => <Trying videoData={value.url} />,
+    blockVideo: ({ value }) => <VideoDisplay videoData={value} />,
   },
 
     list: {

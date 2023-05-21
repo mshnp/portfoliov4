@@ -46,7 +46,7 @@ export default defineType({
 defineField({
   name:'postVideo',
   title: 'Video',
-  type: 'video'
+  type: 'video',
 }),
 defineField({
   name: 'duration',
