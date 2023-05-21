@@ -26,10 +26,20 @@ const Post = async ({params: {slug}}) => {
           }
         }
       },
-      video {
+      postVideo {
         videoFile {
           asset->{
             url
+          }
+        }
+      }, 
+      body[]{
+        ...,
+        _type == "blockVideo" => {
+          videoFile {
+            asset -> {
+              url
+            }
           }
         }
       }
@@ -78,8 +88,8 @@ console.log(post)
     ))}
   </div>
 </section>
-{post.video &&
-  <VideoDisplay videoData={post.video} />
+{post.postVideo &&
+  <VideoDisplay videoData={post.postVideo} />
 }
 
 <div className="bg-gray-200 w-full">

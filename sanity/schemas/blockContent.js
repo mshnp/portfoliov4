@@ -58,11 +58,10 @@ export default defineType({
       },
     }),
     defineField ({
-      title: 'Video',
+      title: 'blockVideo',
       name: 'blockVideo',
       type: 'video',
 }),
-
 defineField({
   title: 'Web Video',
   name: 'blockWebVideo',

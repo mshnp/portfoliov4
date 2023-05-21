@@ -1,6 +1,6 @@
-
+// video.js
 export default {
-    name: 'video',
+    name: 'new',
     title: 'Video',
     type: 'object',
     fields: [
@@ -23,4 +23,11 @@ export default {
         },
       },
     ],
+    preview: {
+      select: {
+        title: 'title',
+        media: 'videoFile',
+      },
+    },
   };
+  
