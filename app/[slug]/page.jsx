@@ -7,67 +7,84 @@ import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 import Gallery from '@/components/Gallery';
 import VideoDisplay from '@/components/VideoDisplay';
+import Gallery2 from '@/components/Gallery 2';
+import Gallery3 from '@/components/Gallery 3';
+import PostBanner from '@/components/PostBanner';
 
 const Post = async ({params: {slug}}) => {
     const query = groq`
     *[_type in ["post"] && slug.current == $slug][0] {
-      ...,  
-      myGallery{
-        row1[]{alt, asset->{url}}, 
-        row2[]{alt, asset->{url}}, 
-        row3[]{alt, asset->{url}}, 
+      ...,
+      myGallery {
+        row1[] {
+          alt,
+          flex,
+          asset-> {
+            url
+          }
+        },
+        row2[] {
+          alt,
+          asset-> {
+            url
+          }
+        },
+        row3[] {
+          alt,
+          asset-> {
+            url
+          }
+        },
         caption
       },
       mainImages {
-        images[]{
-          alt, 
-          asset->{
+        images[] {
+          alt,
+          asset-> {
             url
           }
         }
       },
-      postVideo { 
-        isLooping,
-        videoFile {
-          asset->{
+      bannerimageOrVideo {
+        bannerImagesArray[] {
+          alt,
+          _key,
+          asset-> {
+            url
+          }
+        },
+        video {
+          asset-> {
             url
           }
         }
-      }, 
-      body[]{
+      },
+      postVideo {
+        isLooping,
+        videoFile {
+          asset-> {
+            url
+          }
+        }
+      },
+      body[] {
         ...,
         _type == "blockVideo" => {
           isLooping,
           videoFile {
-            asset -> {
+            asset-> {
               url
             }
           }
         }
       }
     }
-    
-`
+`    
 const post = await client.fetch(query, {slug})
-
-console.log(post)
 
   return (
     <article>
-
-      <section>
-        <div className='flex gap-2 flex-wrap justify-center'>
-         {post.mainImages.images.map((image, index) => (
-              <Image
-                key={index}
-                alt={image.alt}
-                width="500"
-                height="500"
-                src={urlForImage(image).url()}
-              />
-            ))}
-        </div>
-      </section>
+     <PostBanner media={post.bannerimageOrVideo} />      
       <h3>
           {post.title}
         </h3>
@@ -147,7 +164,7 @@ console.log(post)
 </section>
 <section>
        {post.myGallery &&
-  <Gallery gallery={post.myGallery} />
+  <Gallery3 gallery={post.myGallery} />
 }
 </section>
 </section>
