@@ -1,12 +1,13 @@
 import Gallery from "./Gallery";
 import VideoDisplay from "./VideoDisplay";
-
+import WebVideoDisplay from "./WebVideoDisplay";
 
 export const RichTextComponents = {
   types: {
 
     myGallery: ({value}) => <Gallery  gallery={value} />,
     blockVideo: ({ value }) => <VideoDisplay videoData={value} />,
+    blockWebVideo: ({value}) => <WebVideoDisplay media={value}/>,
   },
 
     list: {

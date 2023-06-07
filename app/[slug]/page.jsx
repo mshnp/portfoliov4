@@ -10,6 +10,7 @@ import VideoDisplay from '@/components/VideoDisplay';
 import Gallery2 from '@/components/Gallery 2';
 import Gallery3 from '@/components/Gallery 3';
 import PostBanner from '@/components/PostBanner';
+import WebVideoDisplay from '@/components/WebVideoDisplay';
 
 const Post = async ({params: {slug}}) => {
     const query = groq`
@@ -59,14 +60,6 @@ const Post = async ({params: {slug}}) => {
           }
         }
       },
-      postVideo {
-        isLooping,
-        videoFile {
-          asset-> {
-            url
-          }
-        }
-      },
       body[] {
         ...,
         _type == "blockVideo" => {
@@ -76,6 +69,9 @@ const Post = async ({params: {slug}}) => {
               url
             }
           }
+        },
+        _type == "blockWebVideo" => {
+          url
         }
       }
     }
