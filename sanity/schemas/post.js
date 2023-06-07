@@ -104,17 +104,6 @@ export default defineType({
       ],
       validation: Rule => Rule.required(),
     }),    
-    defineField({
-    name: 'postWebVideo',
-    title: 'Web Video',
-    type: 'webVideo',
-}),
-// schema.js
-defineField({
-  name:'postVideo',
-  title: 'Video',
-  type: 'video',
-}),
 defineField({
   name: 'duration',
   title: 'Duration',
