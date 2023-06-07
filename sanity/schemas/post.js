@@ -38,6 +38,73 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'bannerimageOrVideo',
+      title: 'Banner Image or Video',
+      type: 'object',
+      description: 'This is the banner for the post. Please choose either an array of images (up to 2) or a video.',
+      fields: [
+        {
+          name: 'bannerImagesArray',
+          title: 'Images',
+          type: 'array',
+          validation: Rule => Rule.custom((bannerImagesArray, context) => {
+            const { document } = context;
+            const hasVideo = document.bannerimageOrVideo && document.bannerimageOrVideo.video;
+    
+            if (bannerImagesArray && bannerImagesArray.length > 0 && hasVideo) {
+              return 'Please select either images or a video, not both.';
+            }
+    
+            return true;
+          }),
+          of: [
+            {
+              name: 'bannerImage',
+              type: 'image',
+              title: 'Banner Image',
+              options: {
+                hotspot: true,
+              },
+              fields: [
+                {
+                  name: 'caption',
+                  type: 'string',
+                  title: 'Caption',
+                  description: 'Add a caption to the image.',
+                },
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative Text',
+                  description: 'Add alternative text to the image for accessibility purposes.',
+                  validation: Rule => Rule.required(),
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: 'video',
+          title: 'Video',
+          type: 'file',
+          options: {
+            accept: 'video/*', // Accepts all video types
+          },
+          validation: Rule => Rule.custom((video, context) => {
+            const { document } = context;
+            const hasImages = document.bannerimageOrVideo && document.bannerimageOrVideo.bannerImagesArray && document.bannerimageOrVideo.bannerImagesArray.length > 0;
+    
+            if (hasImages && video) {
+              return 'Please select either images or a video, not both.';
+            }
+    
+            return true;
+          }),
+        },
+      ],
+      validation: Rule => Rule.required(),
+    }),    
+    defineField({
     name: 'postWebVideo',
     title: 'Web Video',
     type: 'webVideo',
@@ -104,7 +171,7 @@ defineField ({
       name: 'images',
       type: 'array',
       title: 'Images',
-      validation: Rule => Rule.required().max(2).warning('Please select up to two images only.'),
+      validation: Rule => Rule.required().max(2).error('Please select up to two images only.'),
       of: [
         {
           name: 'image',
