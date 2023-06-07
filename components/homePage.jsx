@@ -29,7 +29,7 @@ const Homepage = async () => {
         return (
           <div key={_id}>
             <Link href={`/${slug}`}>
-            <div className="flex flex-wrap bg-gray-100 p-4 mb-4">
+            <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
     {mainImages.images.map((image, index) => (
  <div key={index} className={columnWidth}>
    <Image

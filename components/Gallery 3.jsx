@@ -8,7 +8,7 @@ const Gallery = ({gallery}) => {
 
      const getColumnWidth = (row) => {
         const imageCount = row.length;
-        return `w-full md:w-1/${imageCount} p-2`;
+        return `md:w-1/${imageCount} sm:w-full p-2`;
       };
     
       const columnWidth1 = getColumnWidth(row1);
@@ -20,9 +20,9 @@ console.log(columnWidth1)
 <div>
   {caption && (<h1 className="text-2xl font-bold mb-4">{caption}</h1>)}
   {row1 && (
-    <div className="flex bg-yellow-100 p-4 mb-4">
+    <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
       {row1.map(image => (
-        <div key={image._id} className={columnWidth1}>
+        <div key={image._id}  className={`${columnWidth1}`}>
           <Image
             className="w-full rounded-lg shadow-lg"
             alt={image.alt}
@@ -35,9 +35,9 @@ console.log(columnWidth1)
     </div>
   )}
   {row2 && (
-    <div className="flex flex-wrap bg-gray-200 p-4 mb-4">
-      {row2.map(image => (
-        <div key={image._id} className={columnWidth2}>
+    <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
+    {row2.map(image => (
+        <div key={image._id}  className={`${columnWidth2}`}>
           <Image
             className="w-full rounded-lg shadow-lg"
             alt={image.alt}
