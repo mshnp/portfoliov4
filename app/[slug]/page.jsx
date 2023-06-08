@@ -7,8 +7,6 @@ import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 import Gallery from '@/components/Gallery';
 import VideoDisplay from '@/components/VideoDisplay';
-import Gallery2 from '@/components/Gallery 2';
-import Gallery3 from '@/components/Gallery 3';
 import PostBanner from '@/components/PostBanner';
 import WebVideoDisplay from '@/components/WebVideoDisplay';
 
@@ -160,7 +158,7 @@ const post = await client.fetch(query, {slug})
 </section>
 <section>
        {post.myGallery &&
-  <Gallery3 gallery={post.myGallery} />
+  <Gallery gallery={post.myGallery} />
 }
 </section>
 </section>

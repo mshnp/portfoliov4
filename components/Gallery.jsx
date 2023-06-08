@@ -6,20 +6,29 @@ const Gallery = ({gallery}) => {
 
      const {row1, row2, row3, caption} = gallery
 
+     const getColumnWidth = (row) => {
+        const imageCount = row.length;
+        return `md:w-1/${imageCount} sm:w-full p-2`;
+      };
+    
+      const columnWidth1 = getColumnWidth(row1);
+      const columnWidth2 = row2 ? getColumnWidth(row2) : null;
+      const columnWidth3 = row3 ? getColumnWidth(row3) : null;
+
+console.log(columnWidth1)
   return (
     <section>
-        {
+        
 <div>
-  {caption && (<h1 className="text-2xl font-bold mb-4">{caption}</h1>)}
   {row1 && (
-    <div className="flex flex-wrap bg-gray-100 p-4 mb-4">
+    <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
       {row1.map(image => (
-        <div key={image._id}>
+        <div key={image._id}  className={`${columnWidth1}`}>
           <Image
-            className="relative w-auto sm:w-1/2 lg:w-1/3 p-2 aspect-auto"
+            className="w-full rounded-lg shadow-lg"
             alt={image.alt}
-            layout='fill'
-            objectFit='cover'
+            width="9999"
+            height="9999"
             src={urlForImage(image).url()}
           />
         </div>
@@ -27,14 +36,14 @@ const Gallery = ({gallery}) => {
     </div>
   )}
   {row2 && (
-    <div className="flex flex-wrap bg-gray-200 p-4 mb-4">
-      {row2.map(image => (
-        <div key={image._id} className="w-full sm:w-1/2 lg:w-1/3 p-2">
+    <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
+    {row2.map(image => (
+        <div key={image._id}  className={`${columnWidth2}`}>
           <Image
             className="w-full rounded-lg shadow-lg"
             alt={image.alt}
-            width="500"
-            height="500"
+            width="1000"
+            height="1000"
             src={urlForImage(image).url()}
           />
         </div>
@@ -42,14 +51,14 @@ const Gallery = ({gallery}) => {
     </div>
   )}
   {row3 && (
-    <div className="flex flex-wrap bg-gray-300 p-4 mb-4">
-      {row3.map(image => (
-        <div key={image._id} className="w-full sm:w-1/2 lg:w-1/3 p-2">
+    <div className="flex sm: flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
+    {row3.map(image => (
+        <div key={image._id}  className={`${columnWidth3}`}>
           <Image
             className="w-full rounded-lg shadow-lg"
             alt={image.alt}
-            width="500"
-            height="500"
+            width="1000"
+            height="1000"
             src={urlForImage(image).url()}
           />
         </div>
@@ -57,13 +66,13 @@ const Gallery = ({gallery}) => {
     </div>
   )}
 </div>
-
-    }
-  
-
+{caption && 
+<p>
+  {caption}
+</p>
+}
     </section>
   )
 }
 
 export default Gallery
-
