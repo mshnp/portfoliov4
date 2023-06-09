@@ -174,7 +174,7 @@ const post = await client.fetch(query, {slug})
 
     </div>
      
-       <section className="bg-pink-100">
+       <section className="bg-grey-500">
         <PortableText value={post.body} components={RichTextComponents}/>
       </section>
     </article>
