@@ -28,6 +28,8 @@ export default defineType({
         {title: 'H2', value: 'h2'},
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
+        {title: 'H5', value: 'h5'},
+        {title: 'H6', value: 'h6'},
         {title: 'Quote', value: 'blockquote'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
@@ -66,7 +68,12 @@ defineField({
   title: 'Web Video',
   name: 'blockWebVideo',
   type: 'webVideo',
-}),      
+}),
+defineField(
+  {title: 'Block Card',
+  name: 'blockCard',
+  type: 'card'}
+),      
 defineField({
   name: 'myGallery',
   title: 'My Gallery',
@@ -143,7 +150,7 @@ defineField({
       title: 'Caption',
       type: 'string',
       description: 'Caption for the entire gallery'
-    })
+    }),
   ]
 }),
 

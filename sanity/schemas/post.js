@@ -140,8 +140,8 @@ defineField ({
           type: 'string',
         },
         {
-          name: 'Link',
-          title: 'link',
+          name: 'link',
+          title: 'Link',
           type: 'url',
           description:'link to their portfolio',
         },
