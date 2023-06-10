@@ -10,8 +10,8 @@ import VideoDisplay from '@/components/VideoDisplay';
 import PostBanner from '@/components/PostBanner';
 import WebVideoDisplay from '@/components/WebVideoDisplay';
 
-const Post = async ({params: {slug}}) => {
-    const query = groq`
+const Post = async ({ params: { slug } }) => {
+  const query = groq`
     *[_type in ["post"] && slug.current == $slug][0] {
       ...,
       myGallery {
@@ -73,76 +73,88 @@ const Post = async ({params: {slug}}) => {
         }
       }
     }
-`    
-const post = await client.fetch(query, {slug})
+  `
+  
+  const post = await client.fetch(query, { slug });
 
   return (
-    <article>
-     <PostBanner media={post.bannerimageOrVideo} />      
-      <h3>
-          {post.title}
-        </h3>
-      <div>
-      <section>
-        {post.summary}
-      </section>
-      <section>
-      <section>
-  <div>
-    {post.streaminglinks?.map((link) => (
-      <a
-        key={link._key}
-        href={link.url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {link.service}
-      </a>
-    ))}
-  </div>
-</section>
-{post.postVideo &&
-  <VideoDisplay videoData={post.postVideo} />
-}
-
-<div className="bg-gray-200 w-full">
+    <article className="p-4 sm:p-8">
+      <PostBanner media={post.bannerimageOrVideo} />
+      <h3 className="text-3xl my-4 text-gray-900 dark:text-white">
+        {post.title}
+      </h3>
+      <div className="text-gray-600 dark:text-gray-400">
+        <section className="my-4">{post.summary}</section>
+        <section className="my-4">
+          <div>
+            {post.streaminglinks?.map((link) => (
+              <a
+                key={link._key}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:text-blue-700 hover:underline"
+              >
+                {link.service}
+              </a>
+            ))}
+          </div>
+        </section>
+        <div className="w-full my-8 bg-gray-200 dark:bg-gray-800">
   <div className="container mx-auto">
     <section className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap gap-4">
       {post.duration && (
-        <article className="p-4 bg-orange-300 flex-auto">
-          <h3 className="text-lg font-bold">Duration</h3>
-          <p>{post.duration}</p>
+        <article className="p-2 flex-auto">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+            Duration
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400">
+            {post.duration}
+          </p>
         </article>
       )}
-
       {post.tools.length > 0 && (
-        <article className="p-4 bg-orange-300 flex-auto">
-          <h3 className="text-lg font-bold">Tools</h3>
+        <article className="p-4 flex-auto">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+            Tools
+          </h3>
           {post.tools.map((tool, index) => (
-            <p key={index}>{tool}</p>
+            <p
+              key={index}
+              className="text-gray-600 dark:text-gray-400"
+            >
+              {tool}
+            </p>
           ))}
         </article>
       )}
-
       {post.deliverables.length > 0 && (
-        <article className="p-4 bg-orange-300 flex-auto">
-          <h3 className="text-lg font-bold">Deliverables</h3>
+        <article className="p-4 flex-auto">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+            Deliverables
+          </h3>
           {post.deliverables.map((deliverable, index) => (
-            <p key={index}>{deliverable}</p>
+            <p
+              key={index}
+              className="text-gray-600 dark:text-gray-400"
+            >
+              {deliverable}
+            </p>
           ))}
         </article>
       )}
-
       {post.teamMembers.length > 0 && (
-        <article className="p-4 bg-orange-300 flex-auto">
-          <h3 className="text-lg font-bold">Team Members</h3>
+        <article className="p-4 flex-auto">
+          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+            Team Members
+          </h3>
           {post.teamMembers.map((member) => (
             <a
               key={member._key}
               href={member.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
+              className="block text-blue-500 hover:text-blue-700 hover:underline"
             >
               {member.name}
             </a>
@@ -152,35 +164,17 @@ const post = await client.fetch(query, {slug})
     </section>
   </div>
 </div>
-<section>
-</section>
-<section>
-</section>
-<section>
-       {post.myGallery &&
-  <Gallery gallery={post.myGallery} />
-}
-</section>
-</section>
-     {post.youtube && post.youtube.url && (
-  <iframe
-    src={`${post.youtube.url}`}
-    title="Media Player"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  ></iframe>
-)}
 
-    </div>
-     
-       <section className="bg-grey-500">
-        <PortableText value={post.body} components={RichTextComponents}/>
+
+        <section className="my-8">
+          {post.myGallery && <Gallery gallery={post.myGallery} />}
+        </section>
+      </div>
+      <section className="my-8">
+        <PortableText value={post.body} components={RichTextComponents} />
       </section>
     </article>
-  )
+  );
+};
 
-    
-}
-
-export default Post
+export default Post;
