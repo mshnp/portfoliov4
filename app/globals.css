@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 36, 41, 46;
-  --background-start-rgb: 248, 249, 250;
-  --background-end-rgb: 255, 255, 255;
-  --link-color: 3, 102, 214;
-  --link-hover-color: 3, 102, 214;
+  --color-foreground: rgb(36, 41, 46);
+  --color-background-start: rgb(248, 249, 250);
+  --color-background-end: rgb(255, 255, 255);
+  --color-link: rgb(3, 102, 214);
+  --color-link-hover: rgb(3, 102, 214);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 201, 209, 217;
-    --background-start-rgb: 13, 17, 23;
-    --background-end-rgb: 13, 17, 23;
-    --link-color: 79, 140, 201;
-    --link-hover-color: 79, 140, 201;
+    --color-foreground: rgb(201, 209, 217);
+    --color-background-start: rgb(13, 17, 23);
+    --color-background-end: rgb(13, 17, 23);
+    --color-link: rgb(79, 140, 201);
+    --color-link-hover: rgb(79, 140, 201);
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
+  color: var(--color-foreground);
+  background-color: var(--color-background-start);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height: 1.5;
 }

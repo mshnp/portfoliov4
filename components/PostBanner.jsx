@@ -17,7 +17,7 @@ const PostBanner = ({ media }) => {
   
     return (
       <section className="max-w-4xl mx-auto">
-    <div className="flex sm:flex-wrap lg:flex-nowrap bg-yellow-100 p-4 mb-4">
+    <div className="flex sm:flex-wrap lg:flex-nowrap p-4 mb-4">
           {media.bannerImagesArray?.map((image, key) => (
             <div key={key} className={columnWidth}>
               <Image
