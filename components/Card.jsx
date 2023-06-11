@@ -17,9 +17,9 @@ const Card = ({ card }) => {
   return (
     <div className={`grid grid-cols-1 ${columnClass} gap-4 justify-center`}>
       {card.items?.map((item, _key) => (
-        <div key={_key} className="flex justify-center">
-          <div className="max-w-sm p-6 bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-black dark:text-white">{item.title}</h5>
+        <div key={_key} className="flex justify-center max-w-none">
+          <div className="max-w-sm p-8 bg-white border border-gray-300 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
+            <h6 className="mb-2 mt-0 font-medium tracking-tight text-black dark:text-white" style={{ marginTop: '0' }}>{item.title}</h6>
             <p className="font-normal text-gray-700 dark:text-gray-300">{item.text}</p>
           </div>
         </div>

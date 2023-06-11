@@ -151,8 +151,14 @@ defineField({
       type: 'string',
       description: 'Caption for the entire gallery'
     }),
+    defineField({
+      name: 'scopeToMaxWidth',
+      title: 'Scope to max-width',
+      type: 'boolean',
+      description: 'Scope width to max-width of text'
+    }),
   ]
-}),
+}), 
 
   ],
 })
