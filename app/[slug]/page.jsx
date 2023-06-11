@@ -76,7 +76,7 @@ const Post = async ({ params: { slug } }) => {
 
   return (
     <article>
-      <PostBanner className="p-4 sm:p-8" media={post.bannerimageOrVideo} />
+      <PostBanner className="p-4 sm:p-8" media={post?.bannerimageOrVideo} />
       <h3 className="text-3xl my-4 p-4 sm:p-8 text-gray-900 dark:text-white">
         {post.title}
       </h3>

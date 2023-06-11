@@ -7,7 +7,7 @@ const Gallery = ({ gallery }) => {
 
   const getColumnWidth = (row) => {
     const imageCount = row?.length;
-    return `w-full md:w-1/${imageCount} p-2`;
+    return `w-full md:w-1/${imageCount}`;
   };
 
   const columnWidth1 = getColumnWidth(row1);
@@ -17,7 +17,7 @@ const Gallery = ({ gallery }) => {
   return (
     <section className={`${scopeToMaxWidth ? 'max-w-7xl mx-auto' : ''}`}>
       {row1 && (
-        <div className="flex flex-wrap bg-yellow-100 p-4 mb-4 md:flex-nowrap">
+        <div className="flex flex-wrap gap-4 mb-4 md:flex-nowrap">
           {row1.map((image) => (
             <div key={image._id} className={`${columnWidth1}`}>
               <Image
@@ -33,7 +33,7 @@ const Gallery = ({ gallery }) => {
       )}
 
       {row2 && (
-        <div className="flex flex-wrap bg-yellow-100 p-4 mb-4 md:flex-nowrap">
+        <div className="flex flex-wrap gap-4 mb-4 md:flex-nowrap">
           {row2.map((image) => (
             <div key={image._id} className={`${columnWidth2}`}>
               <Image
@@ -49,7 +49,7 @@ const Gallery = ({ gallery }) => {
       )}
 
       {row3 && (
-        <div className="flex flex-wrap bg-yellow-100 p-4 mb-4 md:flex-nowrap">
+        <div className="flex flex-wrap gap-4 md:flex-nowrap">
           {row3.map((image) => (
             <div key={image._id} className={`${columnWidth3}`}>
               <Image
