@@ -22,6 +22,12 @@ export default{
                 name: 'text',
                 type: 'text',
               },
+              {
+                title: 'Colour',
+                name: 'colour',
+                description: 'colour for card',
+                type:'string',
+              },
             ],
           },
         ],

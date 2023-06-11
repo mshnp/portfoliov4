@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { urlForImage } from '@/sanity/lib/image';
 
 const Gallery = ({ gallery }) => {
-  const { row1, row2, row3, caption } = gallery;
+  const { row1, row2, row3, caption, scopeToMaxWidth } = gallery;
 
   const getColumnWidth = (row) => {
     const imageCount = row?.length;
@@ -15,7 +15,7 @@ const Gallery = ({ gallery }) => {
   const columnWidth3 = row3 ? getColumnWidth(row3) : null;
 
   return (
-    <section>
+    <section className={`${scopeToMaxWidth ? 'max-w-7xl mx-auto' : ''}`}>
       {row1 && (
         <div className="flex flex-wrap bg-yellow-100 p-4 mb-4 md:flex-nowrap">
           {row1.map((image) => (

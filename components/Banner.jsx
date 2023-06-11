@@ -15,10 +15,8 @@ const Banner = async () => {
 
   return (
     <>
-    <section>
-    <h4>
+    <section className='max-w-7xl mx-auto text-justify px-8'>
     <PortableText value={personal.summary} components={RichTextComponents}/>
-    </h4>
     </section>
     </>
   )
