@@ -25,7 +25,7 @@ const Article = ({ title, content, isLink = false }) => (
 
 const SummaryInformation = ({ post }) => {
   return (
-    <div className="w-full bg-gray-200 dark:bg-gray-800 my-8">
+    <div className="w-full rounded-md bg-gray-200 dark:bg-gray-800 my-8">
       <div className="container mx-auto p-4 max-w-7xl">
         <div className="lg:flex lg:justify-center lg:items-start lg:max-w-4xl mx-auto">
           <section className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap gap-4">

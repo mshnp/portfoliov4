@@ -75,13 +75,17 @@ const Post = async ({ params: { slug } }) => {
   const post = await client.fetch(query, { slug });
 
   return (
-    <article>
-      <PostBanner className="p-4 sm:p-8" media={post?.bannerimageOrVideo} />
-      <h3 className="text-3xl my-4 p-4 sm:p-8 text-gray-900 dark:text-white">
+    <article className='px-4 sm:px-8'>
+      <div className='max-w-5xl mx-auto'>
+         <PostBanner media={post?.bannerimageOrVideo} />
+        <h3 className="text-4xl text-left -pt-8 text-gray-900 dark:text-white">
         {post.title}
-      </h3>
-      <div className="text-gray-600 dark:text-gray-400">
-        <section className="my-4">{post.summary}</section>
+         </h3>
+        <div className="text-gray-600 dark:text-gray-400">
+        <section className="text-left">{post.summary}</section>
+        </div>
+        </div>
+        
         <section className="my-4">
           <div>
             {post.streaminglinks?.map((link) => (
@@ -98,8 +102,7 @@ const Post = async ({ params: { slug } }) => {
           </div>
         </section>
         <SummaryInformation post={post}/>
-      </div>
-      <section className="my-4 p-4 mx-auto sm:p-8">
+      <section className="mx-auto -pt-8">
       <PortableText value={post.body} components={RichTextComponents} />
       </section>
     </article>

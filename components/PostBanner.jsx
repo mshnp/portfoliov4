@@ -10,14 +10,14 @@ const PostBanner = ({ media }) => {
       }
   
       const imageCount = images.length;
-      return `w-full sm:w-full md:w-1/${imageCount} p-2`;
+      return `w-full sm:w-full md:w-1/${imageCount}`;
     };
   
     const columnWidth = getColumnWidth(media.bannerImagesArray);
   
     return (
-      <section className="max-w-4xl mx-auto">
-    <div className="flex sm:flex-wrap lg:flex-nowrap p-4 mb-4">
+      <section className="max-w-5xl mb-8 mx-auto">
+    <div className="flex sm:flex-wrap lg:flex-nowrap">
           {media.bannerImagesArray?.map((image, key) => (
             <div key={key} className={columnWidth}>
               <Image
