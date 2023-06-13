@@ -97,9 +97,9 @@ defineField({
           type: 'string',
           options: {
             list: [
-              { title: 'Are.na', value: 'are.na' },
-              { title: 'LinkedIn', value: 'linkedin' },
-              { title: 'Twitter', value: 'twitter' },
+              { title: 'Read.cv', value: 'read.cv' },
+              { title: 'LinkedIn', value: 'linkedIn' },
+              { title: 'Email', value: 'email' },
             ],
           },
         },

@@ -12,13 +12,13 @@ export const RichTextComponents = {
   },
 
   list: {
-    bullet: ({ children }) => <ul className="max-w-5xl mx-auto list-disc pl-8 mb-8 text-gray-900 dark:text-gray-100">{children}</ul>,
-    number: ({ children }) => <ol className="max-w-5xl mx-auto list-decimal pl-8 mb-8 text-gray-900 dark:text-gray-100">{children}</ol>,
+    bullet: ({ children }) => <ul className="max-w-5xl mx-auto list-disc leading-normal pl-8 mb-8 text-gray-900 dark:text-gray-100">{children}</ul>,
+    number: ({ children }) => <ol className="max-w-5xl mx-auto leading-normal list-decimal pl-8 mb-8 text-gray-900 dark:text-gray-100">{children}</ol>,
   },
 
   block: {
-    h1: ({children}) => <h1 className="max-w-5xl mx-auto text-6xl mt-8 mb-4 font-sans text-gray-900 dark:text-white">{children}</h1>, 
-    h2: ({children}) => <h2 className="max-w-5xl mx-auto text-5xl mt-8 mb-3 font-sans text-gray-900 dark:text-gray-100">{children}</h2>,
+    h1: ({children}) => <h1 className="max-w-5xl mx-auto text-6xl leading-tight mt-8 mb-4 font-sans text-gray-900 dark:text-white">{children}</h1>, 
+    h2: ({children}) => <h2 className="max-w-5xl mx-auto text-5xl mt-8 mb-3 leading-normal font-sans text-gray-900 dark:text-gray-100">{children}</h2>,
     h3: ({children}) => <h3 className="max-w-5xl mx-auto text-4xl mt-8 mb-2 font-sans text-gray-900 dark:text-gray-200">{children}</h3>, 
     h4: ({children}) => <h4 className="max-w-5xl mx-auto text-3xl mt-8 mb-2 font-sans text-gray-900 dark:text-gray-300">{children}</h4>,
     h5: ({children}) => <h5 className="max-w-5xl mx-auto text-2xl mt-8 mb-1 font-sans text-gray-900 dark:text-gray-400">{children}</h5>,

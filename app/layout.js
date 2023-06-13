@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
        <div style={{backgroundColor: 'var(--background-start-rgb)', color: 'var(--foreground-rgb)'}}>
         <Header/>
-        <div className='pt-10'>
+        <div className='pt-20 sm:pt-32'>
           {children}
           </div>
         <Footer/>
