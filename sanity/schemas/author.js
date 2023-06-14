@@ -99,7 +99,7 @@ defineField({
             list: [
               { title: 'Read.cv', value: 'read.cv' },
               { title: 'LinkedIn', value: 'linkedIn' },
-              { title: 'Email', value: 'email' },
+              { title: 'GitHub', value: 'gitHub' },
             ],
           },
         },

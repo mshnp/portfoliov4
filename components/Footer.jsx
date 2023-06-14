@@ -43,7 +43,7 @@ const Footer = () => {
       <footer className="w-full bg-gray-200 dark:bg-gray-800">
         <section className="pb-8 pt-16 max-w-5xl mx-auto px-4 sm:px-8">
         
-            <a href={`mailto:${links.email}`} className="text-blue-500 inline-block mb-2">
+            <a href={`mailto:${links.email}`} target="_blank" className="text-blue-500 inline-block mb-2">
               Email
             </a>
             {renderSocialLinks(links.socialLinks)}
