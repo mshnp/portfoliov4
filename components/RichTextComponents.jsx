@@ -1,12 +1,10 @@
 import Gallery from "./Gallery";
-import VideoDisplay from "./VideoDisplay";
 import WebVideoDisplay from "./WebVideoDisplay";
 import Card from "./Card";
 
 export const RichTextComponents = {
   types: {
     myGallery: ({value}) => <div className="flex justify-center mx-auto py-4"><Gallery gallery={value} /></div>,
-    blockVideo: ({ value }) => <div className="flex justify-center mx-auto py-4"><VideoDisplay videoData={value} /></div>,
     blockWebVideo: ({value}) => <div className="flex justify-center mx-auto py-4"><WebVideoDisplay media={value}/></div>,
     blockCard: ({value}) => <div className="flex justify-center mx-auto py-4"><Card card={value}/></div>,
   },
