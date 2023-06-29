@@ -31,10 +31,11 @@ const PostBanner = ({ media }) => {
           ))}
         </div>
   
-        <div className="relative rounded-lg pb-[56.25%] h-0 overflow-hidden w-full">
+        <div className="relative pb-[56.25%] h-0 overflow-hidden w-full">
         {media?.bannerVideo && (
             <iframe
             loading="lazy"
+            className='rounded-lg'
               style={{ padding: 0, position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
               src={media?.bannerVideo?.url}
               frameBorder="0"
