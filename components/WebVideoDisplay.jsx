@@ -1,6 +1,7 @@
 import React from 'react'
 
 const WebVideoDisplay = ({media}) => {
+  console.log(media)
   return (
     <div>
   <iframe

@@ -13,12 +13,12 @@ const PostBanner = ({ media }) => {
       return `w-full sm:w-full md:w-1/${imageCount}`;
     };
   
-    const columnWidth = getColumnWidth(media.bannerImagesArray);
+    const columnWidth = getColumnWidth(media?.bannerImagesArray);
   
     return (
       <section className="max-w-5xl mb-8 mx-auto">
     <div className="flex sm:flex-wrap lg:flex-nowrap">
-          {media.bannerImagesArray?.map((image, key) => (
+          {media?.bannerImagesArray?.map((image, key) => (
             <div key={key} className={columnWidth}>
               <Image
                 className="w-full rounded-lg shadow-lg"
@@ -31,14 +31,19 @@ const PostBanner = ({ media }) => {
           ))}
         </div>
   
-        <div>
-  {/* Render the video if it exists */}
-  {media.video && (
-    <video autoPlay loop muted controls={false}>
-      <source src={media.video.asset.url} autoPlay loop muted controls={false} />
-    </video>
-  )}
-</div>
+        <div className="relative rounded-lg pb-[56.25%] h-0 overflow-hidden w-full">
+        {media?.bannerVideo && (
+            <iframe
+            loading="lazy"
+              style={{ padding: 0, position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+              src={media?.bannerVideo?.url}
+              frameBorder="0"
+              allowFullScreen
+              webkitallowfullscreen
+              mozallowfullscreen
+            />
+        )}
+      </div>
 
       </section>
     );
