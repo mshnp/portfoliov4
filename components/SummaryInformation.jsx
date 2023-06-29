@@ -29,10 +29,10 @@ const SummaryInformation = ({ post }) => {
       <div className="container mx-auto p-4 max-w-7xl">
         <div className="lg:flex lg:justify-center lg:items-start lg:max-w-4xl mx-auto">
           <section className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap gap-4">
-            {post.duration && <Article title='Duration' content={[post.duration]} />}
-            {post.tools.length > 0 && <Article title='Tools' content={post.tools} />}
-            {post.deliverables.length > 0 && <Article title='Deliverables' content={post.deliverables} />}
-            {post.teamMembers.length > 0 && <Article title='Team Members' content={post.teamMembers} isLink />}
+            {post?.duration && <Article title='Duration' content={[post.duration]} />}
+            {post?.tools.length > 0 && <Article title='Tools' content={post.tools} />}
+            {post?.deliverables.length > 0 && <Article title='Deliverables' content={post.deliverables} />}
+            {post?.teamMembers.length > 0 && <Article title='Team Members' content={post.teamMembers} isLink />}
           </section>
         </div>
       </div>

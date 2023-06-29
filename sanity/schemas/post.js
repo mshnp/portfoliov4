@@ -49,12 +49,16 @@ export default defineType({
           type: 'array',
           validation: Rule => Rule.custom((bannerImagesArray, context) => {
             const { document } = context;
-            const hasVideo = document.bannerimageOrVideo && document.bannerimageOrVideo.video;
-    
+            const hasVideo = document.bannerimageOrVideo && document.bannerimageOrVideo.bannerVideo;
+      
             if (bannerImagesArray && bannerImagesArray.length > 0 && hasVideo) {
               return 'Please select either images or a video, not both.';
             }
     
+            if (bannerImagesArray && bannerImagesArray.length > 2) {
+              return 'You can upload a maximum of 2 images.';
+            }
+      
             return true;
           }),
           of: [
@@ -84,20 +88,15 @@ export default defineType({
           ],
         },
         {
-          name: 'video',
+          name: 'bannerVideo',
           title: 'Video',
-          type: 'file',
-          options: {
-            accept: 'video/*', // Accepts all video types
-          },
-          validation: Rule => Rule.custom((video, context) => {
+          type: 'webVideo',
+          validation: Rule => Rule.custom((bannerVideo, context) => {
             const { document } = context;
             const hasImages = document.bannerimageOrVideo && document.bannerimageOrVideo.bannerImagesArray && document.bannerimageOrVideo.bannerImagesArray.length > 0;
-    
-            if (hasImages && video) {
+            if (hasImages && bannerVideo) {
               return 'Please select either images or a video, not both.';
             }
-    
             return true;
           }),
         },
