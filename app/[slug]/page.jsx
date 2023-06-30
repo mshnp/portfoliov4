@@ -5,70 +5,94 @@ import { PortableText } from '@portabletext/react';
 import { RichTextComponents } from '@/components/RichTextComponents';
 import PostBanner from '@/components/PostBanner';
 import SummaryInformation from '@/components/SummaryInformation';
+import { notFound } from 'next/navigation'
 
-const Post = async ({ params: { slug } }) => {
-  const query = groq`
-    *[_type in ["post"] && slug.current == $slug][0] {
-      ...,
-      myGallery {
-        row1[] {
-          alt,
-          flex,
-          asset-> {
-            url
-          }
-        },
-        row2[] {
-          alt,
-          asset-> {
-            url
-          }
-        },
-        row3[] {
-          alt,
-          asset-> {
-            url
-          }
-        },
-        caption,
-        scopeToMaxWidth,
-      },
-      mainImages {
-        images[] {
-          alt,
-          asset-> {
-            url
-          }
-        }
-      },
-      bannerimageOrVideo {
-        bannerImagesArray[] {
-          alt,
-          _key,
-          asset-> {
-            url
-          }
-        },
-        bannerVideo{url}
-      },
-      body[] {
-        ...,
-        _type == "blockVideo" => {
-          isLooping,
-          videoFile {
-            asset-> {
-              url
-            }
-          }
-        },
-        _type == "blockWebVideo" => {
+
+export async function generateMetadata({ params: { slug } }) {
+  const post = await client.fetch(query, { slug })
+  let words = slug.split('-');
+  let capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+  let titleSlug = capitalizedWords.join(' ');
+  
+  if(!post) {
+    return {title: 'Not Found'}
+  }
+  return {
+    title: `${titleSlug}`,
+    description:`${post?.summary}`,
+  }
+}
+
+const query = groq`
+*[_type in ["post"] && slug.current == $slug][0] {
+  ...,
+  myGallery {
+    row1[] {
+      alt,
+      flex,
+      asset-> {
+        url
+      }
+    },
+    row2[] {
+      alt,
+      asset-> {
+        url
+      }
+    },
+    row3[] {
+      alt,
+      asset-> {
+        url
+      }
+    },
+    caption,
+    scopeToMaxWidth,
+  },
+  mainImages {
+    images[] {
+      alt,
+      asset-> {
+        url
+      }
+    }
+  },
+  bannerimageOrVideo {
+    bannerImagesArray[] {
+      alt,
+      _key,
+      asset-> {
+        url
+      }
+    },
+    bannerVideo{url}
+  },
+  body[] {
+    ...,
+    _type == "blockVideo" => {
+      isLooping,
+      videoFile {
+        asset-> {
           url
         }
       }
+    },
+    _type == "blockWebVideo" => {
+      url
     }
-  `
+  }
+}
+`
+
+const Post = async ({ params: { slug } }) => {
+ 
   
   const post = await client.fetch(query, { slug });
+
+  if(!post){
+    notFound()
+}
+
   return (
     <article className='px-4 sm:px-8'>
       <div className='max-w-5xl mx-auto'>
