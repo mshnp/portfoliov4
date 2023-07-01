@@ -7,6 +7,28 @@ import PostBanner from '@/components/PostBanner';
 import SummaryInformation from '@/components/SummaryInformation';
 import { notFound } from 'next/navigation'
 
+export const revalidate = 60;
+
+export const dynamicParams = false // true | false,
+
+export async function generateStaticParams() {
+  const query = groq`*[_type=='post']{
+    slug
+  }`
+
+  const slugs = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => {
+    return slug.slug.current;
+  });
+
+  return slugRoutes.map(slug => ({
+    
+      slug,
+
+  }));
+}
+
+
 
 export async function generateMetadata({ params: { slug } }) {
   const post = await client.fetch(query, { slug })
@@ -92,7 +114,6 @@ const Post = async ({ params: { slug } }) => {
   if(!post){
     notFound()
 }
-
   return (
     <article className='px-4 sm:px-8'>
       <div className='max-w-5xl mx-auto'>
