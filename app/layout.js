@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import { Metadata } from 'next'
 
+export const revalidate = 60 // revalidate this page every 60 seconds
+
 
 const inter = Inter({ subsets: ['latin'] })
 
