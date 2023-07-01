@@ -1,6 +1,8 @@
 import Banner from '@/components/Banner';
 import Homepage from '@/components/homePage';
 
+export const revalidate = 60;
+
 const Home = () => {
 
     return (

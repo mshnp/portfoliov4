@@ -6,6 +6,42 @@ import { RichTextComponents } from '@/components/RichTextComponents';
 import PostBanner from '@/components/PostBanner';
 import SummaryInformation from '@/components/SummaryInformation';
 
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const query = groq`*[_type=='post']{
+    slug
+  }`
+
+  const slugs = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => {
+    console.log(slug.slug.current); // Log the slug
+    return slug.slug.current;
+  });
+
+  return slugRoutes.map(slug => ({
+    params: {
+      slug,
+    },
+  }));
+}
+
+export async function hehe() {
+  const query = groq`*[_type=='post']{
+    slug
+  }`
+
+  const slugs = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => {
+   // Log the slug
+    return slug.slug.current;
+  })
+ console.log(slugRoutes);
+}
+
+
+
+
 const Post = async ({ params: { slug } }) => {
   const query = groq`
     *[_type in ["post"] && slug.current == $slug][0] {

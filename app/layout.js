@@ -10,6 +10,9 @@ export const metadata = {
   description: 'Mishean Peiris UX/UI Portfolio',
 }
 
+export const revalidate = 60;
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

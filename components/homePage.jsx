@@ -4,6 +4,7 @@ import { urlForImage } from '@/sanity/lib/image';
 import Link from 'next/link';
 import { client } from '@/sanity/lib/client';
 
+
 const query= groq`*[_type == "post"]{
   _id, title, slug, summary, mainImages{images[]{
        alt, asset->{url}

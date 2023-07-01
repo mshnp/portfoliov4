@@ -2,6 +2,7 @@ import { groq } from 'next-sanity';
 import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
 
+
 const query = groq`*[_type == "author"][0]{
   email, socialLinks, updatedAt
 }`;
