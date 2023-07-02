@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
         })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}');
         `}
     </Script>
+    <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4}`}></Script>
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <link
   rel="icon"
