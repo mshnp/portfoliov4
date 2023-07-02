@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation'
 
 export const revalidate = 60;
 
-export const dynamicParams = false // true | false,
+export const dynamicParams = true // true | false,
 
 export async function generateStaticParams() {
   const query = groq`*[_type=='post']{
